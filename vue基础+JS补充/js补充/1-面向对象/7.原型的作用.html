@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型的作用</title>
+    <script>
+        /*
+            原型的作用:
+                原型相当于一个公共的区域,可以被所有该类实例访问
+                    可以将该类实例中,所有的公共属性(方法)统一存储到原型中
+                    只需创建一个属性,即可被所有实例访问
+                JS中继承就是通过原型实现的
+                    -当继承时,子类的原型就是一个父类的实例
+                修改原型时,最好通过类去修改
+                    实例.prototype
+                    不要直接给 实例.prototype 赋值
+                    实例.prototype.xxx=xxx
+
+        */ 
+        class Person {
+            name = 'erlei'
+            age=18
+            sayHello() {
+                console.log(this.name)
+            }
+        }
+        const p1=new Person()
+        const p2=new Person()
+        // 所有的同类型对象他们的原型对象都是同一个,原型链也是一样的
+        console.log(p1===p2) //false
+        console.log(p1.__proto__===p2.__proto__) //ture
+
+        class Animal{
+
+        }
+        class Cat extends Animal{
+
+        }
+        const cat=new Cat()
+        // cat -> Animal ->Object -> Object原型
+        console.log(cat.__proto__)
+        console.log(cat.__proto__.__proto__)
+        console.log(cat.__proto__.__proto__.__proto__)
+        console.log(cat.__proto__.__proto__.__proto__.__proto__)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

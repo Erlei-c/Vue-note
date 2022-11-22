@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>姓名案例-methods实现</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <span>姓:</span><input type="text" v-model="xing">
+        <br>
+        <span>名:</span><input type="text" v-model="ming">
+        <br>
+        <span>全名:{{fullName()}}</span>
+    </div>
+    <script>
+        const vm=new Vue({
+            el:'#root',
+            data:{
+                xing:'',
+                ming:''
+            },
+            methods:{
+                fullName(){
+                    return this.xing +'-'+this.ming
+                }
+            }
+        })
+    </script>
+
+    
+</body>
+</html>

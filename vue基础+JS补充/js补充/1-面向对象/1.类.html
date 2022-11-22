@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类</title>
+    <script>
+        /*
+            使用Object创建对象的问题:
+                1.无法区分不同类型的对象
+                2.不方便批量创建对象
+            在js中可以通过类(class)来解决这个问题:
+                1.类是对象的模版,可以将对象中的属性和方法直接定义在类中
+                    定义后,就可以直接通过类来创建对象
+                2.通过同一个类创建的对象,称为同类对象
+                    可以使用instanceof来检查一个对象是否是由某个类创建
+                    如果某个对象是由某个类所创建,则我们称该对象是这个类的实例
+            语法:
+                class 类名 {} 类名要使用大驼峰命名
+        */ 
+       class Person{
+        // "use strict" 类的代码块,默认就是严格模式
+        // 类的代码块是用来设置对象的属性的,不是什么代码都能写
+        name='Erlei'//Person的实例属性 name
+        age //实例属性只能通过实例访问
+        address='HangZhou'
+        static test="test静态属性"//使用static声明的属性是静态属性(类属性)
+        //静态属性只能通过类访问
+        sayHello(){
+            //添加方法(实例方法)
+            //实例方法中this就是当前实例
+            console.log('我是'+this.name)
+        }
+        static test(){
+            console.log('我是静态方法',this)
+            //静态方法(类方法)通过类访问
+            //静态方法中this指向的是当前类
+        }
+       }
+       const p1=new Person()//调用构造函数创建对象
+       console.log(p1)
+       console.log(p1.address)
+       console.log(p1.test)//undefined
+       console.log(Person.test)
+       console.log(p1 instanceof Person) //ture 
+       p1.sayHello()
+       p1.test()//报错
+       Person.test()
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

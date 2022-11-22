@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件对象</title>
+    <style>
+        #box1{
+            width: 300px;
+            height: 300px;
+            border: 10px greenyellow solid;
+            /* background-color: greenyellow; */
+        }
+        #box2{
+            width: 250px;
+            height: 250px;
+            background-color: #ff0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2"></div>
+    </div>
+    <a href=""></a>
+
+    <script>
+        /*
+            event 事件
+                -事件对象是由浏览器在事件触发时所创建的对象,
+                    这个对象中封装了事件相关的各种信息
+                -通过事件对象可以获取到事件的详细信息
+                    比如:鼠标的坐标,键盘的按键
+                -浏览器在创建事件对象后,会将事件对象作为响应函数的参数传递
+                    所以我们可以在事件的回调函数中定义一个形参接收事件对象
+                -在DOM中存在着多种不同类型的事件对象
+                    -多种事件对象有一个共同的祖先 Event
+
+                -事件的冒泡(bubble)
+                    -事件的冒泡就是指事件的向上传导
+                    -当元素上的某个事件被触发后,其祖先元素上的相同时间也会同时被触发
+                    -冒泡的存在大大的简化了代码的编写,但是在一些场景下并不希望冒泡存在
+                        不希望事件冒泡时,可以通过事件对象来取消冒泡
+
+
+                event.target 表示触发事件的对象
+                    -this是绑定事件的对象
+                event.currentTarget 表示绑定事件的对象
+                event.stopPropagation() 取消事件的传导
+                event.preventDefault*() 取消默认行为
+        */ 
+       const box1=document.getElementById('box1')
+       const box2=document.getElementById('box2')
+    //    box1.onmousemove=function(event){
+    //     console.log('鼠标移动了',event)
+    //    }
+        box1.addEventListener('click',event => {
+            // console.log(event)
+            // box1.textContent=event.clientX + '-' +event.clientY
+            console.log('我是box1的事件')
+            event.preventDefault()
+        })
+        box2.addEventListener('click',()=>{
+            event.stopPropagation()//取消事件的传导
+            console.log('我是box2的事件')
+        })
+    </script>
+</body>
+</html>

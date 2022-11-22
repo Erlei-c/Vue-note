@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解构赋值(数组)</title>
+</head>
+<body>
+    <script>
+        /*
+            解构赋值
+        */ 
+       const arr=['张三','李四','王五']
+       let a,b,c
+    //    [a,b,c]=['张三','李四','王五']
+       ;[a,b,c]=arr
+       console.log(a,b,c)
+       let [d,e,f,g]=['赵六','李七','元八']//声明同时解构 g为undefined
+    //    ;[d,e,f,g]=[1,2,3] //如报错,检查分号
+       console.log(d,e,f,g)
+    //    ;[d,e,f,g=10]=[1,2,3]//可以传入默认值
+       ;[d,e,f,g=g]=[1,2,3]//g=g的意思为:g如果之前有值,那么就是使用原值,
+       console.log(d,e,f,g)
+
+       let [n1,n2,...n3]=[4,5,6,7]//解构数组时,可以通过...来设置对于的元素
+       console.log(n1,n2,n3)
+
+       function fn(){
+            return ['千里眼','顺风耳']
+       }
+       let [name1,name2]=fn()
+       //可以通过解构赋值来快速的交换两个变量的值
+       let a1=10
+       let a2=20
+       console.log(a1,a2)
+       ;[a1,a2]=[a2,a1] // [20,10]
+       console.log(a1,a2)
+        // 解构多维数组
+        const arr3=[['孙悟空',18,'男'],['猪八戒',28,'男']]
+        let [[name,age,gender],obj]=arr3 
+        console.log(name,age,gender)
+        console.log(obj)
+
+    </script>
+</body>
+</html>

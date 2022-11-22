@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高阶函数</title>
+</head>
+<body>
+    <script>
+        /*
+            希望someFn()函数执行时,可以记录一条日志
+            在不修改原函数的基础上,为其增加记录日志功能
+
+            可以通过高阶函数,来动态的生成一个新函数
+        */ 
+        function someFn(){
+            return "Hello"
+        }
+        function outer(cb){
+            return () => {
+                console.log("记录了一个日志")
+                const result = cb() // 因为传入的回调函数有返回值,所以接收一下
+                return result
+            }
+        }
+        let result = outer(someFn)
+        console.log(result)
+    </script>
+</body>
+</html>

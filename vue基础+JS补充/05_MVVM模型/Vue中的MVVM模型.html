@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue中的MVVM模型</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        MVVM模型
+            1.M 模型(Model):对应data中的数据
+            2.v 视图(View):模版
+            3.vm 视图模型(ViewModel):Vue实例对象
+        观察发现:
+            1.data中的所有属性,最后都出现在了vm上
+            2.vm身上所有属性 及 Vue原型上的所有属性,在Vue模版中都可以直接使用
+     -->
+    <img src="./Vue中的MVVM.png" alt="">
+    <div id="root">
+        <h1>{{name}},{{address}}</h1>
+        <h1>测试vm中的属性{{_c}}</h1>
+        <h1>测试Vue原型中的属性{{$emit}}</h1>
+        <h1>测试vm中的属性{{$options}}</h1>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#root',
+            data() {
+                return {
+                    name: 'Erlei-c',
+                    address: '杭州'
+                }
+            }
+        })
+        console.log(vm)
+    </script>
+</body>
+
+</html>

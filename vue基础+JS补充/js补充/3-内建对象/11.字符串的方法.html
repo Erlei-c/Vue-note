@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串的方法</title>
+</head>
+
+<body>
+    <script>
+        /*
+            字符串:
+                -字符串其本质就是一个字符数组:"hello" ->['h','e','l','l','o']
+                -字符串的很多方法都和数组是非常类似的
+                =属性和方法:
+                    length:获取字符串的长度
+                    字符串[索引]:获取指定索引位置的字符
+                    str.at()
+                        -根据索引获取字符,可以接收负索引
+                    str.concat()
+                        -用来连接两个或多个字符串(非破坏性)
+                    str.includes()
+                        -用来检查字符串中是否包含某个内容
+                        -参数:
+                            1.检查的内容
+                            2.起始位置
+                    str.indexOf() 返回索引
+                    str.lastIndexOf() 返回索引
+                    str.startsWith()
+                        -检查一个字符串是否以指定内容开头
+                    str.endsWith()
+                        -检查一个字符串是否以指定内容结尾
+                    str.padStart()
+                    str.padEnd()
+                        -通过添加指定内容,使字符串保持某个长度
+                        -参数:
+                            1.指定长度
+                            2.指定填充内容
+                    str.replace()
+                        -使用一个新字符串替换指定内容
+                    str.replaceAll()
+                        -使用一个新字符串替换所有指定内容
+                    str.slice()
+                        -截取字符串
+                    str.substring()
+                        -截取字符串
+                    str.split()
+                        -将一个字符串拆分为一个数组
+                    str.trim()
+                        -去除一个字符串的前后空格
+        */
+       let str='hello'
+       console.log(str[0])
+       for(let char of str){
+        console.log(char)
+       }
+       console.log(str.at(0))
+       console.log(str.at(-1))
+       
+       str="hello hello how are you"
+       console.log(str.includes('hello'))
+
+
+    </script>
+</body>
+
+</html>

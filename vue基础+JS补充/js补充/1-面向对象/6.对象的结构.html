@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的结构</title>
+    <script>
+        /*
+            对象存储属性的区域有两个
+                1.对象自身
+                    -直接通过对象所添加的属性
+                    -在类中通过 x=y的形式添加的属性,也位于对象自身中
+                2.原型对象(prototype)
+                    -在对象中会有一个属性用来存储原型对象,这个属性叫做__proto__
+                    -当访问对象属性时,会优先访问对象自身的属性,
+                        对象自身不包含该属性时,才会去原型对象中寻找
+                    -回添加到原型中的情况:
+                        1.在类中通过xx(){}方式添加的方法,会位于原型中
+                        2.主动向原型中添加的属性或方法
+                    
+                    访问对象原型:
+                        对象.__proto__   可修改
+                        Object.getPrototypeOf(对象)  不可修改
+
+                    原型对象的数据:
+                        1.对象中的数据
+                        2.constructor(对象的构造函数)
+                    注意:原型对象也有原型,这样就构成了一条原型链
+                        p对象的原型:p对象->Object->Object原型->null
+
+        */ 
+        class Person {
+            name = 'erlei'
+            age=18
+            sayHello() {
+                console.log(this.name)
+            }
+        }
+        const p = new Person()
+        console.log(p.__proto__)
+        console.log(p.constructor)
+        console.log(Object.getPrototypeOf(p))
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

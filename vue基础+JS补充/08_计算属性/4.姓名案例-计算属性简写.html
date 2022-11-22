@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.姓名案例-计算属性实现</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <span>姓:</span><input type="text" v-model="xing">
+        <br>
+        <span>名:</span><input type="text" v-model="ming">
+        <br>
+        <span>全名:{{fullName}}</span>
+    </div>
+    <script>
+        const vm=new Vue({
+            el:'#root',
+            data:{
+                xing:'',
+                ming:''
+            },
+            computed:{
+                // 完整写法
+                    // fullName:{
+                    //     get(){
+                    //         console.log(this)//此处的this是vm
+                    //         return this.xing+'-'+this.ming
+                    //     },
+                    //     set(value){
+                    //         const arr=value.split('-')
+                    //         console.log(arr)
+                    //         this.xing=arr[0]
+                    //         this.ming=arr[1]
+                    //     }
+                    // }
+                // 简写 只读时才能简写
+                        fullName(){
+                            return this.xing+'-'+this.ming
+                        }
+            }
+        })
+    </script>
+</body>
+</html>

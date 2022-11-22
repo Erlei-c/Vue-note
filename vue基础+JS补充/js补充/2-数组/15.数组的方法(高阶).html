@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组的方法(高阶)</title>
+</head>
+<body>
+    <script>
+        /*
+            sort()
+                -sort()用来对数组进行排序(会改变原数组)
+                -sort默认会将数组升序排列
+                    注意:sort默认会按照Unicode编码进行排序,所以如果直接通过sort对数字进行排序,可能会得到一个不正确的结果
+                -参数:
+                    -可以通过传递一个回调函数作为参数,通过回调函数来指定排序规则
+                    (a,b) => a-b    升序排列
+                    (a,b) => b-a    降序排列
+            forEach()
+                -用来遍历数组
+                -参数:
+                    需要一个回调函数作为参数,这个回调函数会被调用多次(数组有几个元素,就调用几次)
+                        每次调用,都会将数组中的数据作为参数传递
+                -回调函数中有三个元素:
+                    element 当前元素
+                    index 当前元素的索引
+                    array  被遍历的数组
+            filter()
+                -将数组中符合条件的元素保存到一个新数组中返回(非破坏性)
+                -参数:
+                    需要一个回调函数作为参数,会为每一个元素去调用回调函数,并根据返回值来决定是否将元素添加到新数组中
+                -回调函数中有三个元素:
+                    element 当前元素
+                    index 当前元素的索引
+                    array  被遍历的数组
+            map()
+                -根据当前数组生成一个新数组(非破坏性)
+                -参数:
+                    需要一个回调函数作为参数
+                        回调函数中的返回值会成为新数组中的元素
+                -回调函数中有三个元素:
+                    element 当前元素
+                    index 当前元素的索引
+                    array  被遍历的数组
+            reduce()
+                -可以用来将一个数组中的所有元素整合为一个值
+                -参数:
+                    1.回调函数,通过回调函数来指定合并规则
+                    2.可选参数,初始值
+        */ 
+        let arr=['a','c','e','f','d','b']
+        let arr2=[2,6,1,7,8,10,]
+        // sort默认   
+        arr.sort()
+        console.log(arr)
+        // sort传回调
+        arr2.sort((a,b) => a-b) //升序
+        console.log(arr2)
+        let arr3=['张三','李四','王五']
+        // forEach()
+        arr3.forEach((element,index,array) => {
+            console.log(element,index,array)
+        });
+        // 获取数组中的所有偶数
+        let result=arr2.filter(element => element % 2===0)
+        console.log(result)
+        // map()
+        let result2=arr2.map(ele => ele*2)
+        console.log(result2)
+        // map的使用场景
+        let result3=arr3.map(ele => "<li>" + ele + "</li>")
+        console.log(result3)
+        // reduce()
+        arr2=[2,6,1,7,8,10,]
+        let result4=arr2.reduce((a,b)=>{
+            /*
+                2,6 == 2+6=8
+                8,1 == 8+1=9
+                9,7 == 9+7=16
+            */ 
+            console.log(a,b)
+            return a+b
+        })
+        console.log(result4)
+
+    </script>
+</body>
+</html>

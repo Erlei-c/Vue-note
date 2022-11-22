@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>读取css样式</title>
+    <style>
+        #box1{
+             width: 200px;
+             height: 200px;
+             background-color: #bfa !important;
+        }
+        #box1::before{
+            content:'hello';
+            color: rebeccapurple;
+        }
+     </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <button id="btn">点我读取样式</button>
+
+    <script>
+        /*
+            getComputedStyle()
+                -返回一个对象,这个对象包含了当前元素所有的生效样式
+                -参数:
+                    1.要获取样式的对象
+                    2.要获取的伪元素
+                -注意:
+                    样式对象中返回的样式值,不一定是能拿来直接计算的
+                        所以使用时,一定要确保值是可以计算的才去计算
+
+            元素.clientHeight
+            元素.clientWidth
+                -获取元素内部的宽度和高度(包括内容区和内边距)
+            元素.offsetHeight
+            元素.offsetwidth
+                -获取元素的可见框大小(包括内容区和内边距和边框)
+            元素.scrollHeight
+            元素.scrollwidth
+                -获取元素滚动区域的大小
+            元素.offsetTop
+            元素.offsetLeft
+                -获取元素相对于其定位父元素的偏移量
+            元素.offsetParent
+                -获取元素的定位父元素
+                -定位父元素:离当前元素最近的开启了定位的祖先元素,如果所有元素都没有开启定位,则返回body
+            元素.scrollTop
+            元素.scrollLeft
+                -获取或设置元素滚动条的偏移量
+        */ 
+        const btn=document.getElementById('btn')
+        const box1=document.getElementById('box1')
+
+        btn.onclick=function(){
+            const styleObj=getComputedStyle(box1)
+            const beforeStyle=getComputedStyle(box1,'::before')
+            console.log(styleObj.width)
+            console.log(parseInt(styleObj.width)+100)
+            box1.style.width=parseInt(styleObj.width)+100 +'px'
+            console.log(beforeStyle.color)
+        }
+    </script>
+</body>
+</html>

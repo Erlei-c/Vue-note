@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map</title>
+</head>
+<body>
+    <script>
+        /*
+            Map
+                -Map用来存储键值对的数据(key-value)
+                -Map和Object的主要区别:
+                    -Object中的属性名只能是字符串或符号,如果传递了一个其他类型的属性名,JS解释器会自动将其转换为字符串
+                    -Map中任何类型的值都可以成为数据的key
+                创建:
+                    new Map()
+                属性和方法:
+                    map.size()获取map中键值对的数量
+                    map.set(key,value)向map中添加键值对
+                    map.get(key 根据key获取值
+                    map.delete(key) 删除指定数据
+                    map.has(key) 检查map中是否包含指定键
+                    map.clear() 删除全部的键值对
+                    map.keys() 获取map的所有key
+                    map.value()获取map的所有value
+                    map.entries() 获取map中的所有键值对
+        */ 
+       const obj2={}
+        // 创建一个Map
+        const map=new Map()
+        console.log(map)
+        map.set(obj2,'哈哈')
+        map.set(NaN,'Hello')
+        console.log(map.get(obj2))
+        console.log(map.get(NaN))
+        map.delete(obj2)
+        console.log(map)
+
+
+        const map2=new Map()
+        map2.set("name","张三")
+        map2.set("age",42)
+        map2.set({},"哈哈")
+
+        // 将map转换为数组
+        // const arr=Array.from(map2) //[['name','张三'],['age','18']]
+        const arr=[...map2]
+        console.log(arr)
+
+        // 
+        const map3=new Map([["name","猪八戒"],["age",18],[{},()=>{}]])
+        console.log(map3)
+
+        // 遍历map
+        for(const entry of map2){
+            const [key,value]=entry
+            console.log(entry)
+        }
+        map2.forEach((key,value,c)=>{
+            console.log(key,value,c)
+        })
+    </script>
+</body>
+</html>

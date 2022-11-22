@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改css样式</title>
+    <style>
+       #box1{
+            width: 200px;
+            height: 200px;
+            background-color: #bfa !important;
+       }
+       .box2{
+        background-color: orange;
+       }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <button id="btn">点我修改样式</button>
+
+    <script>
+        const btn=document.getElementById('btn')
+        const box1=document.getElementById('box1')
+
+        btn.onclick=function(){
+            // 修改box1的样式
+            // 修改样式的方式: 元素.style.样式名=样式值
+            // 如果样式名中含有'-',则需要将样式名修改为驼峰命名法
+            box1.style.width='400px'
+            box1.className='box2'//覆盖
+            box1.className+=' box2'//追加
+            // classList 是一个对象,对象中提供了对当前元素的类的各种操作方法
+            /*
+                classList.add() 添加一个类名
+                classList.remove() 移除类名
+                classList.toggle() 切换类名 有就去除,没有就添加
+                classList.replace() 替换,参数:替换目标,添加的类名
+                classList.contains() 检查类名中是否含有指定类
+            */ 
+            box1.classList.add('box2','box3','box4')
+
+        }
+    </script>
+</body>
+</html>

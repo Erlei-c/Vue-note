@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.姓名案例-计算属性实现</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <span>姓:</span><input type="text" v-model="xing">
+        <br>
+        <span>名:</span><input type="text" v-model="ming">
+        <br>
+        <span>全名:{{fullName}}</span>
+    </div>
+    <script>
+        /*
+            computed和watch之间的区别:
+                1.computed能完成的功能,watch都可以完成
+                2.watch能完成的功能,computed不一定能完成,例如:watch可以进行异步操作
+            原则:
+                1.所被Vue管理的函数,最好写成普通函数,这样this的指向才是vm或组件实例对象
+                2.所有不被Vue管理的函数,(定时器的回调函数,ajax的回调函数,Pomise的回调函数)
+                    最好写成箭头函数,这样this的指向才是vm 或 组件实例对象
+        */ 
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                xing: '',
+                ming: '',
+                fullName:''
+            },
+            watch:{
+                xing(newValue){
+                    setTimeout(()=>{
+                        this.fullName=newValue + '-' + this.ming
+                    },1000)
+                    
+                },
+                ming(newValue){
+                    this.fullName=this.xing + '-' + newValue
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

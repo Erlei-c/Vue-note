@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象</title>
+    <script>
+        /*
+            对象
+                -对象时JS中的一种复合数据类型.
+                它相当于一个容器,在对象中可以存储各种不同类型数据
+
+                添加属性:
+                    对象.属性名=属性值
+                    特殊属性名:
+                        对象["属性名"]=属性值
+                        对象[变量]=属性值
+                读取属性:
+                    对象.属性名
+                    特殊属性名:
+                        对象["属性名"]
+                        对象[变量]
+                删除属性:
+                    delete 对象.属性名
+                检查对象中是否含有某个属性:
+                    属性名 in obj 
+                枚举:
+                    for(let propName in obj){
+                        console.log(propName,obj[propName])
+                    }
+                    有几个属性就执行几次
+                    每次执行时,都会将一个属性名赋值给我们所定义的变量
+        */
+        const obj = {
+            name: 'erlei',
+            age: 18,
+            gender: '男'
+        }
+        for (let propName in obj) {
+            console.log(propName, obj[propName])
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

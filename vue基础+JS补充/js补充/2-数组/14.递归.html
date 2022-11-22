@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>递归</title>
+</head>
+<body>
+    <script>
+        /*
+            递归
+                -调用自身的函数称为递归函数
+                -递归的作用和循环基本一致
+                function fn(){
+                    fn()
+                }
+                fn()
+        */ 
+        // 创建一个函数,可以用来求任意数的阶乘    
+        /*
+            1!=1
+            2!=1x2
+            3!=1x2x3
+            ...
+            10!=1x2x3x4x5x6x7x8x9x10
+            如何用递归来解决阶乘问题?
+                5!= 4!x5
+                4!= 3!x4
+                3!= 2!x3
+                2!= 1!x2
+                1!= 1!x1
+            递归的核心思想就是将一个大的问题拆分为一个一个小问题,小的问题解决了,大的问题随之也解决了
+            编写递归函数,一定要包含的两个要点:
+                1.基线条件--递归的终止条件
+                2.递归条件--如何对问题进行拆分
+            递归的作用和循环是一致的,不同点在于,递归思路比较清晰简洁,循环的执行性能比较好(递归会反复创建作用域)
+        */ 
+        //循环实现计算阶乘
+        function jiecheng(num){
+            let result=1
+            for(let i=1;i<=num;i++){
+                result *= i
+            }
+            return result
+        }    
+        let result = jiecheng(5);
+        console.log(result)
+        // 递归实现计算阶乘
+        function jiecheng2(num){
+            // 基线条件
+            if(num===1) return 1
+            // 递归条件
+            // num! = (num-1)*num
+            return jiecheng2(num-1)*num
+        }
+        result=jiecheng2(5)
+        /*
+            jiecheng2(5)
+                -return jiecheng2(5-1)*5,return jiecheng2(4)*5
+                    -return jiecheng2(3)*4
+                        -return jiecheng2(2)*3
+                            -return jiecheng2(1)*2
+                                - return 1
+        */ 
+        /*
+            一对兔子出生后两个月后每个月都能生一对小兔子
+                -编写一个函数,可以来计算第n个月的兔子数量
+            1 2 3 4 5 6 7  8  9  10  11  12  13  14  15
+            1 1 2 3 5 8 13 21 34
+            - 规律,当前数等于前两个数之和(斐波那契数列)
+        */ 
+        // 求斐波那契数列的第n个数
+        function fib(n){
+            // 确定基线条件
+            if(n<3) return 1
+            // 设置递归条件
+            // 第n个数= 第n-1个数 + 第n-2个数
+            // return 第n-1个数 + 第n-2个数
+            return fib(n-1) + fib(n-2)
+        }    
+    </script>
+</body>
+</html>
